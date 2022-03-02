@@ -3,20 +3,23 @@ import { connect } from 'react-redux';
 
 import { changeCategory, activateCategory } from '../../store/store';
 import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
 
 function Catagories(props) {
   return (
     <>
-      <div data-testId={'Categories'}>Catagories</div>
-      <Button data-testId={'catButton'} onClick={() => props.activateCategory()}>
+
+    <Typography data-testid='Categories' variant="h3" color="initial">Catagories</Typography>
+      <Button sx={{width: '30%', alignSelf: 'center'}} variant="outlined" data-testid='catButton' onClick={() => props.activateCategory()}>
         {props.showActiveCategory ? 'Show All' : 'Show Category'}
       </Button>
-      <div>
+
+      <Typography variant="h4" color="initial">
         Category: {props.activeCategoryProp ? props.activeCategoryProp : 'none'}
-      </div>
+      </Typography>
       <div>
         {props.categoryProp.map((cat) => (
-          <Button onClick={() => props.changeCategory(cat)}>{cat}</Button>
+          <Button variant="outlined" onClick={() => props.changeCategory(cat)}>{cat}</Button>
         ))}
       </div>
     </>

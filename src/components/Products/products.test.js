@@ -24,7 +24,7 @@ describe('Testing the Products Component', () => {
       </Provider>
     );
 
-    let display = screen.getByText('Cat YumsHooman Yums');
+    let display = screen.getByText('Cat Yums');
     expect(display).toBeInTheDocument();
   });
 });

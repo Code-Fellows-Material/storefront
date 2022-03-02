@@ -4,7 +4,7 @@ import Nav from './Nav.jsx';
 
 describe('testing the Nav component', () => {
   it('Should render Nav', () => {
-  let title = "Nav"
+  let title = "Virtual Store"
 
     render(<Nav />);
     let heading = screen.getByText(title);

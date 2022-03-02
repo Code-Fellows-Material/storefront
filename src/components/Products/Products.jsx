@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ProductFilter } from './ProductFilter';
+import Typography from '@mui/material/Typography'
 
 function Products(props) {
   return (
     <>
-      <div data-testid="Products">Products</div>
+      <Typography variant="h4" color="initial" data-testid="Products">Products</Typography>
       <ProductFilter
         products={props.productsProp}
         activeCat={props.activeCategoryProp}

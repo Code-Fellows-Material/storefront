@@ -4,10 +4,8 @@ import Footer from './Footer.jsx';
 
 describe('testing the Footer component', () => {
   it('Should render Footer', () => {
-  let title = "Footer"
-
     render(<Footer />);
-    let heading = screen.getByText(title);
-    expect(heading).toBeInTheDocument();
+    let display = screen.getByTestId('Footer');
+    expect(display).toBeInTheDocument();
   });
 });
