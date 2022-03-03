@@ -12,6 +12,7 @@ export default function SimpleBottomNavigation() {
 
   return (
     <Box data-testid={'Footer'} sx={{ width: '100%', position: "fixed", bottom: 0}}>
+      <Typography sx={{position: "fixed", bottom: 10, right: 10, color: 'white' }} >Copy Right 2022</Typography>
       <BottomNavigation
       sx={{backgroundColor: 'rgba(112, 178, 194, .7)', height: '100px' }}
         value={value}
@@ -19,10 +20,9 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <Typography sx={{position: "fixed", bottom: 0, left: 0}} >Copy Right 2022</Typography>
-        <BottomNavigationAction sx={{ color: 'white'}} label="Recent" icon={<RestoreIcon fontSize="large" sx={{ color: 'white', fontSize: '2.5em'  }} />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon fontSize="large" sx={{ color: 'white', fontSize: '2.5em'  }} />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon fontSize="large" sx={{ color: 'white', fontSize: '2.5em'  }} />} />
+        <BottomNavigationAction icon={<RestoreIcon fontSize="large" sx={{ color: 'white', fontSize: '2.5em'  }} />} />
+        <BottomNavigationAction icon={<FavoriteIcon fontSize="large" sx={{ color: 'white', fontSize: '2.5em'  }} />} />
+        <BottomNavigationAction icon={<LocationOnIcon fontSize="large" sx={{ color: 'white', fontSize: '2.5em'  }} />} />
       </BottomNavigation>
     </Box>
   );

@@ -18,9 +18,9 @@ function Products(props) {
 
 const mapStateToProps = (state) => {
   return {
-    productsProp: state.state.products,
-    activeCategoryProp: state.state.activeCategory,
-    showActiveCategory: state.state.showActiveCategory,
+    productsProp: state.products.products,
+    activeCategoryProp: state.categories.activeCategory,
+    showActiveCategory: state.categories.showActiveCategory,
   };
 };
 

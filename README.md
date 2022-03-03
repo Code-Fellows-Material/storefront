@@ -37,4 +37,6 @@
 
 ## Wire Frame:
 
+### Phase 1:
+
 ![uml](/StoreFront.jpg)
