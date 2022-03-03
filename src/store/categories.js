@@ -1,20 +1,20 @@
-
-
 const initialState = {
-  categories: ['people', 'catPeoples'],
-  activeCategory: null,
-  products: [{
-    name: 'Cat Yums',
-    category: 'catPeoples'
-  },
-  {
-    name: 'Hooman Yums',
-    category: 'people'
+  categories: [{
+    normalizedName: 'cat toys',
+    displayName: 'cat toys',
+    description: 'For all your kitty fun needs!',
+    id: 1
+  }, {
+    normalizedName: 'dog toys',
+    displayName: 'dog toys',
+    description: 'For all your doggy fun needs!',
+    id: 2
   }],
+  activeCategory: 'cat toys',
   showActiveCategory: false
 }
 
-const stateReducer = ( state = initialState, action) => {
+const categoryReducer = ( state = initialState, action) => {
   let {type, payload} = action;
   
   switch (type) {
@@ -31,10 +31,10 @@ const stateReducer = ( state = initialState, action) => {
   }
 }
 
-export const changeCategory = (cat) => {
+export const changeCategory = (category) => {
   return {
     type: 'CHANGE_CATEGORY',
-    payload: cat
+    payload: category
   }
 }
 
@@ -45,4 +45,4 @@ export const activateCategory = () => {
   }
 }
 
-export default stateReducer;
+export default categoryReducer;

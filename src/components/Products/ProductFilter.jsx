@@ -1,13 +1,16 @@
 import React from 'react';
 import Typography from '@mui/material/Typography'
+import Product from './Product';
+
+
 
 export function ProductFilter({ products, activeCat, showActiveCat }) {
   let productsArr = showActiveCat ?
     products
       .filter((product) => activeCat === product.category)
-      .map((product) => product.name)
+      .map((product) => <Product key={product.id} product={product}/>)
     :
-    products.map((product) => <div>{product.name}</div>);
+    products.map((product) => <Product key={product.id} product={product}/>);
 
-  return <Typography variant="h5" color="initial">{ productsArr }</Typography>;
+  return <Typography variant="h6" color="initial">{productsArr}</Typography>;
 }
