@@ -1,31 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { changeCategory, activateCategory } from '../../store/categories';
 import Button from '@mui/material/Button';
 import { ButtonGroup, Typography, Stack, Box } from '@mui/material';
 
+import { get_categories } from '../../store/categories';
+import {useDispatch, useSelector} from 'react-redux';
+
 function Catagories(props) {
+
+
+  let categoryState = useSelector(state => state.categories)
+
+  console.log('categoryState', categoryState)
+
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(get_categories);
+  }, [])
+
   return (
     <>
       <Typography data-testid='Categories' variant='h3' color='initial'>
         Catagories
       </Typography>
-    <Box  sx={{ width: '15%', alignSelf: 'center' }}>
+    <Box  sx={{ width: '50%', alignSelf: 'center' }}>
     <Stack>
         <Button
           data-testid='catButton'
-          onClick={() => props.activateCategory()}
+          onClick={() => dispatch(activateCategory())}
         >
-          {props.showActiveCategoryProp ? 'Show All' : 'Show Category'}
+          {categoryState.showActiveCategory ? 'Show All' : 'Show Category'}
         </Button>
         <ButtonGroup size="large"  variant='text'>
-          {props.categoryProp.map((cat) => (
+          {categoryState.categories.map((cat) => (
             <Button
-              key={cat.id}
-              onClick={() => props.changeCategory(cat.displayName)}
+              key={cat._id}
+              onClick={() => dispatch(changeCategory(cat.name))}
             >
-              {cat.displayName}
+              {cat.name}
             </Button>
           ))}
         </ButtonGroup>
@@ -33,23 +48,10 @@ function Catagories(props) {
     </Box>
 
       <Typography variant='h4' color='initial'>
-        Category: {props.activeCategoryProp ? props.activeCategoryProp : 'none'}
+        Category: {categoryState.activeCategory ? categoryState.activeCategory : 'none'}
       </Typography>
     </>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    categoryProp: state.categories.categories,
-    activeCategoryProp: state.categories.activeCategory,
-    showActiveCategoryProp: state.categories.showActiveCategory,
-  };
-};
-
-const mapDispatchToProps = {
-  changeCategory,
-  activateCategory,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Catagories);
+export default Catagories;

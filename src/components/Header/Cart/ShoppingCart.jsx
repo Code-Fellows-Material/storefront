@@ -15,8 +15,6 @@ let itemList = [];
     if(noMatch) itemList.push(item); 
   })
 
-  console.log('Hi', itemList)
-
   return (
     <Menu
       id='basic-menu'
