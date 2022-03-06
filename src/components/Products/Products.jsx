@@ -1,27 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ProductFilter } from './ProductFilter';
 import Typography from '@mui/material/Typography'
+import { getProducts } from '../../store/products';
 
-function Products(props) {
+function Products() {
+
+  let dispatch = useDispatch();
+  let productsState = useSelector(state => state.products.products);
+  let categoryState = useSelector(state => state.categories);
+
+  useEffect(() => {
+    dispatch(getProducts);
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  
+
   return (
     <>
       <Typography variant="h4" color="initial" data-testid="Products">Products</Typography>
       <ProductFilter
-        products={props.productsProp}
-        activeCat={props.activeCategoryProp}
-        showActiveCat={props.showActiveCategory}
+        products={productsState}
+        activeCat={categoryState.activeCategory}
+        showActiveCat={categoryState.showActiveCategory}
       />
     </>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    productsProp: state.products.products,
-    activeCategoryProp: state.categories.activeCategory,
-    showActiveCategory: state.categories.showActiveCategory,
-  };
-};
-
-export default connect(mapStateToProps)(Products);
+export default Products;
