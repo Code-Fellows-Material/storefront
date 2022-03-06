@@ -1,25 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 
-import { changeCategory, activateCategory } from '../../store/categories';
 import Button from '@mui/material/Button';
 import { ButtonGroup, Typography, Stack, Box } from '@mui/material';
 
-import { get_categories } from '../../store/categories';
+import { changeCategory, activateCategory, get_categories } from '../../store/categories';
 import {useDispatch, useSelector} from 'react-redux';
 
-function Catagories(props) {
+function Catagories() {
 
-
-  let categoryState = useSelector(state => state.categories)
-
-  console.log('categoryState', categoryState)
-
+  let categoryState = useSelector(state => state.categories);
   let dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(get_categories);
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

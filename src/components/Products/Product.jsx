@@ -1,25 +1,16 @@
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Button, Paper} from '@mui/material';
-
 import { addItemToCart } from '../../store/products';
 
-function Product({product, addItemToCart}){
+function Product({product}){
 
-
+  const dispatch = useDispatch()
   return(
     <Paper>
       {product.name} | {product.inventory}
-      <Button onClick={() => addItemToCart(product)}>Add</Button>
+      <Button onClick={() => dispatch(addItemToCart(product))}>Add</Button>
     </Paper>
   )
 }
 
-const mapDispatchToProps = {
-  addItemToCart
-};
-
-const mapStateToProps = (state) => {
-return {}
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default Product;

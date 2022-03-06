@@ -42,7 +42,7 @@ const setCategories = (data) => {
 export const get_categories = async (dispatch, getState) => {
   const response = await axios.get(CAT_URL);
   const data = response.data;
-  console.log('DATA:', data);
+  
   dispatch(setCategories(data))
 }
 
