@@ -40,24 +40,46 @@ const productReducer = ( state = initialState, action) => {
   }
 }
 
-export const addItemToCart = (item) => {
+//post products
+const setItem = item => {
   return {
     type: 'ADD_TO_CART',
     payload: item
   }
 }
 
-const setProducts = (data) => {
+
+export const addItemToCart =  item => async dispatch => {
+  console.log(item)
+  item.inStock = item.inStock - 1
+  console.log(item)
+  try{
+    let response = await axios.put(PRODUCT_URL, item);
+    let data = response.data;
+    console.log("POST", data)
+    dispatch(setItem(item));
+  } catch(e){
+    console.log(e)
+  }
+}
+
+// get products
+
+const setProducts = data => {
   return {
     type: 'SET_PRODUCTS',
     payload: data
   }
 }
 
-export const getProducts = async (dispatch, getState) => {
-  let response = await axios.get(PRODUCT_URL);
-  let data = response.data;
-  dispatch(setProducts(data));
+export const getProducts = async dispatch => {
+  try{
+    let response = await axios.get(PRODUCT_URL);
+    let data = response.data;
+    dispatch(setProducts(data));
+  } catch(e){
+    console.log(e)
+  }
 }
 
 
