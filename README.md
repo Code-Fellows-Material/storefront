@@ -1,6 +1,8 @@
 
 # Virtual Store
 
+-- still need to add to readme
+
 ## Overview:
 
 > This Virtual Store app is a demo project for Code Fellows Advanced Javascript Course.
